@@ -1,31 +1,31 @@
 class LocalStorageUtils {
     constructor() {
-        this.keyName = 'products'
+        this.keyName = 'products';
     }
 
     getProducts() {
-        const productsLocalStorage = localStorage.getItem(this.keyName)
+        const productsLocalStorage = localStorage.getItem(this.keyName);
         if (productsLocalStorage !== null) {
-            return JSON.parse(productsLocalStorage)
+            return JSON.parse(productsLocalStorage);
         }
-        return []
+        return [];
     }
 
     putProducts(id) {
         let products = this.getProducts();
         let pushProduct = false;
         const index = products.indexOf(id);
+
         if (index === -1) {
-            products.push(id)
-            pushProduct = true
+            products.push(id);
+            pushProduct = true;
         } else {
-            products.splice(index, 1)
+            products.splice(index, 1);
         }
-        localStorage.setItem(this.keyName, JSON.stringify(products))
-        return {
-            pushProduct,
-            products
-        }
+
+        localStorage.setItem(this.keyName, JSON.stringify(products));
+
+        return { pushProduct, products }
     }
 }
 
