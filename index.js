@@ -5,6 +5,8 @@ function render() {
     productsPage.render();
 }
 
+spinnerPage.render()
+
 let CATALOG = []
 
 
@@ -12,7 +14,11 @@ fetch('server/catalog.json')
     .then(res => res.json())
     .then(body => {
         CATALOG = body;
-        render()
+        setTimeout(() => {
+            spinnerPage.handelClear()
+            render()
+        }, 3000)
+
     })
     .catch(error => {
         console.log(error)
